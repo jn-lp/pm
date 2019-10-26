@@ -1,0 +1,23 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+		"start": "pm2 start index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "graphql": "^14.5.8",
+    "koa": "^2.10.0",
+    "koa-graphql": "^0.8.0",
+    "koa-mount": "^4.0.0",
+    "moment": "^2.24.0",
+    "pg": "^7.12.1",
+    "uuid": "^3.3.3"
+  }
+}
