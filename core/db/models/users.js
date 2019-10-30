@@ -3,12 +3,12 @@ const uuidv4 = require('uuid/v4');
 const db = require('../index');
 
 module.exports = {
-  async create({username, password}) {
+  async create(username, password) {
     const text = `INSERT INTO
       users(id, username, user_type, password, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5, $6)
 			returning *`;
-			
+
     const values = [
       uuidv4(),
 			username,
@@ -28,9 +28,9 @@ module.exports = {
 		return ({ rows, rowCount });
   },
 
-  async getOne(id) {
-    const text = 'SELECT * FROM users WHERE id = $1';
-		const { rows } = await db.query(text, [id]);
+  async getOne(column, value) {
+    const text = `SELECT * FROM users WHERE ${column} = $1`;
+		const { rows } = await db.query(text, [value]);
 		if (!rows[0]) {
 			return ({'message': 'users not found'});
 		}

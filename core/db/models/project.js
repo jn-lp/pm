@@ -3,7 +3,7 @@ const uuidv4 = require('uuid/v4');
 const db = require('../index');
 
 module.exports = {
-  async create({username, password}) {
+  async create({name}) {
     const text = `INSERT INTO
       projects(project_id, name, created_date, modified_date)
       VALUES($1, $2, $3, $4)
@@ -35,7 +35,7 @@ module.exports = {
 		return rows[0];
   },
 
-  async update(id, {username, password}) {
+  async update(id, {name}) {
     const findOneQuery = 'SELECT * FROM projects WHERE id=$1';
     const updateOneQuery =`UPDATE projects
       SET name=$1,modified_date=$2

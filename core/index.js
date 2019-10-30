@@ -1,45 +1,23 @@
 const Koa = require('koa');
 const Router = require('koa-router');
+const cors = require('@koa/cors');
 const koaBody = require('koa-body')();
-const mount = require('koa-mount');
-const convert = require('koa-convert')
-const graphqlHTTP = require('koa-graphql');
-const schema = require('./graphql/schema')
+const { errorHandler, authenticated } = require('./middleware/');
 
-const Users = require('./db/models/users')
+const { authController } = require('./controllers/')
 
 const app = new Koa();
 const router = new Router();
 
-app.use(router.routes())
-app.use(mount('/graphql', graphqlHTTP({
-  schema: schema,
-  graphiql: true
-})))
+app.use(errorHandler)
+app.use(cors())
 
-router.post('/api/v1/users', koaBody, async ctx => {
-	ctx.status = 201;
-	ctx.body = await Users.create(JSON.parse(ctx.request.body))
-});
+router.post('/signup', koaBody, authController.signup);
+router.post('/login', koaBody, authController.login);
 
-router.get('/api/v1/users', async ctx => {
-	ctx.body = await Users.getAll()
-});
+router.get('/test', authenticated, async ctx => {ctx.body = 'protected data test'})
 
-router.get('/api/v1/users/:id', async ctx => {
-	ctx.body = await Users.getOne(ctx.params.id)
-});
-
-router.put('/api/v1/users/:id', koaBody, async ctx => {
-	ctx.body = await Users.update(ctx.params.id, JSON.parse(ctx.request.body))
-});
-
-router.delete('/api/v1/users/:id', async ctx => {
-	ctx.body = await Users.delete(ctx.params.id)
-});
-
-app.on('error', err => {
-  console.error('server error', err)
-});
-
-app.listen(3000);
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .listen(process.env.PORT || 5000);
