@@ -1,15 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './App.css';
+
+import Test from './Test';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-					Hello, <b>pm.</b>
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Route path="/" exact component={Test} />
+    </Router>
   );
 }
 
