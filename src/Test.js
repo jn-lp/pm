@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import axios from 'axios';
+import API from './API';
 
 export default () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     (async function fetch() {
-      const promise = await axios.get('http://localhost:5000/data');
+      const promise = await API.get('data');
       const { status } = promise;
       if (status === 200) {
         const { data } = promise;

@@ -1,16 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import AppNavbar from './components/Navbar';
 
+import store from './store';
+import { loadUser } from './actions/authAction';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import Test from './Test';
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
 
-function App() {
-  return (
-    <Router>
-      <Route path="/" exact component={Test} />
-    </Router>
-  );
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <AppNavbar />
+          <>
+          </>
+        </div>
+      </Provider>
+    );
+  }
 }
 
 export default App;

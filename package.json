@@ -2,9 +2,12 @@
   "name": "pm",
   "productName": "pm.",
   "version": "0.1.0",
+  "proxy": "https://apipm.herokuapp.com/",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^8.2.0",
     "electron": "^7.0.0",
     "is-buffer": "^2.0.4",
     "react": "^16.11.0",
@@ -12,6 +15,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "reactstrap": "^8.1.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
