@@ -1,29 +1,45 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import AppNavbar from './components/Navbar';
+import React, { useEffect } from 'react';
+import {
+  Route, Switch,
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import store from './store';
 import { loadUser } from './actions/authAction';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-class App extends Component {
-  componentDidMount() {
-    store.dispatch(loadUser());
-  }
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+import Loading from './pages/Loading';
+import Home from './pages/Home';
 
-  render() {
-    return (
-      <Provider store={store}>
-        <div className="App">
-          <AppNavbar />
-          <>
-          </>
-        </div>
-      </Provider>
-    );
-  }
-}
+const App = ({ auth }) => {
+  useEffect(() => {
+    if (auth.jwt) store.dispatch(loadUser());
+  }, [auth.jwt]);
 
-export default App;
+  const { isAuthenticated } = auth;
+
+  return auth.jwt && !auth.user ? <Loading /> : (
+    <Switch>
+      <Route path="/" exact>
+        <Home isAuthenticated={isAuthenticated} />
+      </Route>
+      <Route path="/login/" component={Login} />
+      <Route path="/signup/" component={Signup} />
+      <ProtectedRoute path="/dashboard" component={() => <center>{`hi ${auth.user.username}`}</center>} />
+      <ProtectedRoute path="/settings" component={() => <center>{`settings, ${auth.user.username}`}</center>} />
+    </Switch>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(App);

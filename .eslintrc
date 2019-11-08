@@ -8,6 +8,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "no-param-reassign": [2, { "props": false }],
