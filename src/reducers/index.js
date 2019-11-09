@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 import errorReducer from './errorReducer';
 import authReducer from './authReducer';
+import projectReducer from './projectReducer';
 
 export default combineReducers({
   error: errorReducer,
   auth: authReducer,
-  routing: routerReducer,
+  project: projectReducer,
 });

@@ -1,7 +1,3 @@
 import React from 'react';
 
-const Landing = ({ isAuthenticated }) => (
-  <div className="Loading"> loading </div>
-);
-
-export default Landing;
+export default () => <div className="Loading"> loading </div>;

@@ -9,7 +9,6 @@ import {
   REGISTER_FAIL,
 } from '../actions/types';
 
-
 export default (
   state = {
     jwt: localStorage.getItem('jwt'),

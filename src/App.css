@@ -139,3 +139,26 @@
 .Auth .secondary:hover {
   text-decoration: underline;
 }
+
+.Side {
+  width: 256px;
+  background: #F0F9F8;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+}
+
+main {
+  width: calc(100vw - 256px);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 256px;
+  z-index: 4;
+}

@@ -14,6 +14,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Loading from './pages/Loading';
 import Home from './pages/Home';
+import Dashboard from './pages/dashboard/Dashboard';
 
 const App = ({ auth }) => {
   useEffect(() => {
@@ -29,8 +30,7 @@ const App = ({ auth }) => {
       </Route>
       <Route path="/login/" component={Login} />
       <Route path="/signup/" component={Signup} />
-      <ProtectedRoute path="/dashboard" component={() => <center>{`hi ${auth.user.username}`}</center>} />
-      <ProtectedRoute path="/settings" component={() => <center>{`settings, ${auth.user.username}`}</center>} />
+      <ProtectedRoute path="/dashboard" component={Dashboard} />
     </Switch>
   );
 };

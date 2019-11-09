@@ -1,12 +1,11 @@
 import React from 'react';
-import { NavLink } from 'reactstrap';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/authAction';
 
 export const Logout = ({ logout: plogout }) => (
-  <NavLink onClick={plogout} href="#">
+  <button type="button" onClick={plogout}>
     Logout
-  </NavLink>
+  </button>
 );
 
 export default connect(
