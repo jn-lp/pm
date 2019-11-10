@@ -154,6 +154,54 @@
   z-index: 5;
 }
 
+.side-profile {
+  width: 75%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 22px;
+  color: #3F5C69;
+}
+
+.avatar {
+  border-radius: 5px;
+  width: 55px;
+  height: 55px;
+  margin-right: 15px;
+}
+
+.side-nav {
+  width: 75%;
+  padding: 0;
+}
+
+.side-nav li {
+  margin: 20px 0;
+}
+
+.side-nav li a {
+  font-size: 18px;
+  color: #3F5C69;
+}
+
+.side-nav li a.active {
+  font-weight: bold;
+  color: #3F5C69;
+}
+
+.createTask {
+  width: 75%;
+  height: 50px;
+  border-radius: 5px;
+  background: #FFA2CB;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 main {
   width: calc(100vw - 256px);
   height: 100vh;
@@ -161,4 +209,8 @@ main {
   top: 0;
   left: 256px;
   z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

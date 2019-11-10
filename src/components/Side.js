@@ -2,20 +2,23 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Logout from '../pages/auth/Logout';
-
 const ProtectedRoute = ({ user, project }) => (
   <div className="Side">
-    <div>
-      <img alt="avatar" src={`http://tinygraphs.com/spaceinvaders/${user.username}?bg=3F5C69&fg=F0F9F8&size=64&fmt=svg`} />
+    <div className="side-profile">
+      <div
+        style={{
+          backgroundImage: `url(http://tinygraphs.com/spaceinvaders/${user.username}?bg=3F5C69&fg=F0F9F8&size=64&fmt=svg)`,
+        }}
+        className="avatar"
+      />
       {user.username}
     </div>
-    <ul>
+    <ul className="side-nav">
       <li>
         <NavLink exact to="/dashboard/">Dashboard</NavLink>
       </li>
       <li>
-        <NavLink to={`/dashboard/${project.id}`}>Project</NavLink>
+        <NavLink exact to={`/dashboard/${project.id}`}>Project</NavLink>
       </li>
       <li>
         <NavLink to={`/dashboard/${project.id}/calendar`}>Calendar</NavLink>
@@ -27,7 +30,7 @@ const ProtectedRoute = ({ user, project }) => (
         <NavLink to={`/dashboard/${project.id}/settings`}>Settings</NavLink>
       </li>
     </ul>
-    <Logout />
+    <button type="button" className="createTask">create new task</button>
   </div>
 );
 

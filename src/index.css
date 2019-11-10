@@ -1,6 +1,7 @@
 *{
   transition: all ease-in-out 300ms;
-  text-decoration: none;;
+  text-decoration: none;
+  list-style: none;
   border: 0;
   outline: 0;
   font-size: 14px;
